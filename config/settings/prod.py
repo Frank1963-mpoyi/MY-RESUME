@@ -7,7 +7,7 @@ DEBUG = not bool(os.getenv("DEBUG"))
 
 IS_ENV = 'PRODUCTION'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1' , '']
+ALLOWED_HOSTS = ['*']
 
 MIDDLEWARE += ['whitenoise.middleware.WhiteNoiseMiddleware',]
 
