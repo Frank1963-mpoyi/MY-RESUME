@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en-US">
+
+<head>
+    {% include 'includes/head.html' %}
+</head>
+
+<body id="top">
+    {% include 'includes/navbar.html'  with brand_name="MPOYI TSHIBUYI" %}
+
+    {% block content %} {% endblock content %}
+
+    {% include 'includes/footer.html' %}
+
+    {% include 'includes/scripts.html' %}">
+</body>
+
+</html>

@@ -9,7 +9,7 @@ from django.template.loader import get_template
 from django.template.loader import render_to_string
 from django.views.generic import View, TemplateView
 
-from xhtml2pdf import pisa
+# from xhtml2pdf import pisa
 
 from resume.common.email import ContactNotificationEmail
 from resume.apps.web.portfolio.models import GetInTouch
@@ -19,7 +19,7 @@ User = get_user_model()
 
 
 class HomeView(View):
-    template_name = 'portofolio/apps/prtfolio/index.html'
+    template_name = 'apps/portfolio/index.html'
 
     def get(self, request, **kwargs):
         
@@ -29,95 +29,95 @@ class HomeView(View):
         
         return render(request, self.template_name, context)
     
-    def post(self, request, **kwargs):
+    # def post(self, request, **kwargs):
 
-        form = GetInTouchForm(request.POST or None)
+    #     form = GetInTouchForm(request.POST or None)
 
-        name = request.POST.get('name', '')
+    #     name = request.POST.get('name', '')
         
-        if form.is_valid():
+    #     if form.is_valid():
             
-            messages_email = render_to_string('email.html', {'name': name})
+    #         messages_email = render_to_string('email.html', {'name': name})
             
-            data = GetInTouch(**form.cleaned_data)
+    #         data = GetInTouch(**form.cleaned_data)
             
-            data.save() 
+    #         data.save() 
             
-            messages.success(request, "Thanks for contacting us! We will be in touch with you shortly.")
+    #         messages.success(request, "Thanks for contacting us! We will be in touch with you shortly.")
             
-            if data:
-                email = ContactNotificationEmail(data, messages_email)
-                email.run() 
+    #         if data:
+    #             email = ContactNotificationEmail(data, messages_email)
+    #             email.run() 
                 
-            return redirect(self.request.META['HTTP_REFERER'])
-        else:
-            messages.success(request, "Oops! your contact details failed please try again !")  
+    #         return redirect(self.request.META['HTTP_REFERER'])
+    #     else:
+    #         messages.success(request, "Oops! your contact details failed please try again !")  
             
-        context = {'form': form}
+    #     context = {'form': form}
 
-        return render(request, self.template_name, context)
+    #     return render(request, self.template_name, context)
 
 
 
-class PdfCvCreate(View):
+# class PdfCvCreate(View):
     
-    def get(self, request,**kwargs):
+#     def get(self, request,**kwargs):
 
-        data = [{"name":"Mpoyi"}]
+#         data = [{"name":"Mpoyi"}]
 
-        template_path = 'portofolio/apps/prtfolio/cv.html'
+#         template_path = 'resume/apps/portfolio/cv.html'
 
-        context = {'data': data}
+#         context = {'data': data}
 
-        response = HttpResponse(content_type='application/pdf')
+#         response = HttpResponse(content_type='application/pdf')
 
-        response['Content-Disposition'] = 'filename="mpoyi_cv.pdf"'
+#         response['Content-Disposition'] = 'filename="mpoyi_cv.pdf"'
 
-        template = get_template(template_path)
+#         template = get_template(template_path)
 
-        html = template.render(context)
+#         html = template.render(context)
 
-        # create a pdf
-        pisa_status = pisa.CreatePDF(html, dest=response)
+#         # create a pdf
+#         pisa_status = pisa.CreatePDF(html, dest=response)
         
-        # if error then show some funy view
-        if pisa_status.err:
-            return HttpResponse('We had some errors <pre>' + html + '</pre>')
-        return response
+#         # if error then show some funy view
+#         if pisa_status.err:
+#             return HttpResponse('We had some errors <pre>' + html + '</pre>')
+#         return response
 
-class PdfQuotation(View):
+# class PdfQuotation(View):
     
-    def get(self, request,**kwargs):
-        data = [{"name":"Mpoyi"}]
+#     def get(self, request,**kwargs):
+#         data = [{"name":"Mpoyi"}]
 
-        template_path = 'portofolio/apps/prtfolio/invoice.html'
+#         template_path = 'resume/apps/portfolio/invoice.html'
 
-        context = {'data': data}
+#         context = {'data': data}
 
-        response = HttpResponse(content_type='application/pdf')
+#         response = HttpResponse(content_type='application/pdf')
 
-        response['Content-Disposition'] = 'filename="mpoyi_invoice.pdf"'
+#         response['Content-Disposition'] = 'filename="mpoyi_invoice.pdf"'
 
-        template = get_template(template_path)
+#         template = get_template(template_path)
 
-        html = template.render(context)
+#         html = template.render(context)
 
-        # create a pdf
-        pisa_status = pisa.CreatePDF(html, dest=response)
+#         # create a pdf
+#         pisa_status = pisa.CreatePDF(html, dest=response)
         
-        # if error then show some funy view
-        if pisa_status.err:
-            return HttpResponse('We had some errors <pre>' + html + '</pre>')
-        return response
-Invoive = PdfQuotation.as_view()
+#         # if error then show some funy view
+#         if pisa_status.err:
+#             return HttpResponse('We had some errors <pre>' + html + '</pre>')
+#         return response
+# Invoive = PdfQuotation.as_view()
 
-def handle_not_found(request, exception):
-    template_name='not_found.html'
+# def handle_not_found(request, exception):
+#     template_name='not_found.html'
     
-    return render(request, template_name)
+#     return render(request, template_name)
 
 
-def handle_server_error(request):
-    template_name='server_error.html'
+# def handle_server_error(request):
+#     template_name='server_error.html'
     
-    return render(request, template_name)
+#     return render(request, template_name)
