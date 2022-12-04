@@ -43,9 +43,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
-from django.conf import settings
+# from django.conf import settings
 
-settings.configure(ROOT_URLCONF=__name__,),
+# settings.configure(ROOT_URLCONF=__name__,),
 
 TEMPLATES = [
     {
