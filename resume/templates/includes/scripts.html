@@ -3,3 +3,10 @@
 <script src="{% static 'apps/scripts/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'apps/scripts/aos.js' %}"></script>
 <script src="{% static 'apps/scripts/main.js' %}"></script>
+
+<!-- POST method reload -->
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
