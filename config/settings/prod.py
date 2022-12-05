@@ -27,17 +27,6 @@ DATABASES = {
     "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv("NAME"),
-#         'USER': os.getenv("USER"),
-#         'PASSWORD': os.getenv("PASSWORD"),
-#         'HOST': os.getenv("HOST"),
-#         'PORT': os.getenv("PORT"),
-#     }
-# }
-
 STATIC_URL = '/static/'
 
 BASE_PATH = os.path.join(BASE_DIR)
