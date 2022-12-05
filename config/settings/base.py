@@ -78,6 +78,15 @@ USE_I18N = True
 
 USE_TZ = True
 
+# # gmail
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_SENDER =  os.getenv('EMAIL_SENDER')
+#EMAIL_HOST_USER =  os.getenv('EMAIL_HOST_USER')# test with registration reset
+EMAIL_PASSWORD =  os.getenv('EMAIL_PASSWORD')
+
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
 

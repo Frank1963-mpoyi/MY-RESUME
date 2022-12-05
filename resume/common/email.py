@@ -9,12 +9,11 @@ class ContactNotificationEmail(Thread):
         # self.receiver = 'mpoyitshibuyi63@gmail.com'
         self.sender = settings.EMAIL_SENDER
         self.password = settings.EMAIL_PASSWORD
-        self.data = data
-        self.name = data.name
-        self.email = data.email# the one who send from frontend
+        self.name = name
+        self.email = email
         self.message = messages_email
-        self.email_from = data.email 
-        self.subject= "Auto Response - Mpoyi Tshibuyi Resume - Do Not Reply"
+        self.email_from = email 
+        self.subject = "Auto Response - Mpoyi Tshibuyi Resume - Do Not Reply"
 
         Thread.__init__(self)
 

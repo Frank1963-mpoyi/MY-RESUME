@@ -6,7 +6,7 @@
     
     <div class="row">
         <div class="col-md-7 d-print-none">
-              <!-- error message  -->
+    <!-- error message  -->
     <p id="results" class="" style="text-align:center; color:#fff; font-weight: bolder"></p>
             <div class="my-2">
 
@@ -67,7 +67,7 @@
                 $("#contact-form")[0].reset();
             },
             error: function(data) {
-                $('#results').html("<div class='alert-box alert btn btn-danger radius' data-alert>" + data.msg + "</div>"); 
+                $('#results').html("<div class='radius' data-alert style='background:#4A89DC;'>" + data.msg + "</div>"); 
                 $("#contact-form")[0].reset();
             }
             })
