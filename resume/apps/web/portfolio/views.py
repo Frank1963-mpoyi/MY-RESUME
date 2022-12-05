@@ -2,12 +2,12 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.contrib.auth import get_user_model
 from django.template.loader import get_template
-# from django.template.loader import render_to_string
+from django.template.loader import render_to_string
 from django.views.generic import View
 
 from xhtml2pdf import pisa
 
-# from resume.common.email import ContactNotificationEmail
+from resume.common.email import ContactNotificationEmail
 from resume.apps.web.portfolio.models import GetInTouch
 
 User = get_user_model()
@@ -33,20 +33,14 @@ class HomeView(View):
             if name_obj:
                 message = {'msg':f'Oops! {name} already exists please try again'}
                 return JsonResponse(message) 
-
-            GetInTouch.objects.create(name=name, email=email, message=message)
             
-            ########## Email don't work may be is beacause of 
-            # the production its works on the development ########
-            '''
             contact_obj = GetInTouch.objects.create(name=name, email=email, message=message)
+            
             messages_email = render_to_string('email.html', {'name': name})
             
-                if contact_obj:
+            if contact_obj:
                 email = ContactNotificationEmail(name, email, message, messages_email)
                 email.run() 
-                
-            '''
             
             message = {'msg':'Your form has been submitted successfully' }
             return JsonResponse(message)
