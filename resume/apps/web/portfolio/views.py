@@ -2,12 +2,12 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.contrib.auth import get_user_model
 from django.template.loader import get_template
-# from django.template.loader import render_to_string
+from django.template.loader import render_to_string
 from django.views.generic import View
 
 from xhtml2pdf import pisa
 
-# from resume.common.email import ContactNotificationEmail
+from resume.common.email import ContactNotificationEmail
 from resume.apps.web.portfolio.models import GetInTouch
 
 User = get_user_model()
@@ -34,10 +34,11 @@ class HomeView(View):
                 message = {'msg':f'Oops! {name} already exists please try again'}
                 return JsonResponse(message) 
 
-            # messages_email = render_to_string('email.html', {'name': name})
+            messages_email = render_to_string('email.html', {'name': name})
             GetInTouch.objects.create(name=name, email=email, message=message)
             # contact_obj = GetInTouch.objects.create(name=name, email=email, message=message)
             
+            ContactNotificationEmail(name, email, message, messages_email).run()
             # if contact_obj:
             #     email = ContactNotificationEmail(name, email, message, messages_email)
             #     email.run() 
