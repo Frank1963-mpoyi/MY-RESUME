@@ -4,6 +4,26 @@
 <script src="{% static 'apps/scripts/aos.js' %}"></script>
 <script src="{% static 'apps/scripts/main.js' %}"></script>
 
+<!-- scroll button code  -->
+<script type="text/javascript">
+    /* ----------------------------------------------------------- */
+    /*                2. SCROLL TOP BUTTON
+    /* ----------------------------------------------------------- */
+    jQuery(window).scroll(function () {
+        if (jQuery(this).scrollTop() > 100) {
+            jQuery('#btnScrollToTop').fadeIn();
+        } else {
+            jQuery('#btnScrollToTop').fadeOut();
+        }
+    });
+    //Click event to scroll to top
+    jQuery('#btnScrollToTop').click(function () {
+        jQuery('html, body').animate({ scrollTop: 0 }, 800);
+        return false;
+    });
+</script>
+<!-- end scroll button code -->
+
 <!-- POST method reload -->
 <script>
     if ( window.history.replaceState ) {

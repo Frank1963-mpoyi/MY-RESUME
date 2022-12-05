@@ -25,6 +25,32 @@
 <link href="{% static 'apps/css/bootstrap.min.css' %}" rel="stylesheet">
 <link href="{% static 'apps/css/aos.css' %}" rel="stylesheet">
 <link href="{% static 'apps/css/main.css' %}" rel="stylesheet">
+
+<!-- scroll cdn link -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- scroll button code -->
+<style>
+    /* scroll css  */
+    #btnScrollToTop {position: fixed;right: 10px;bottom: 10px;width: 50px;height: 50px;border-radius: 50%;background: #4A89DC;;box-shadow: 0 0 10px rgba(0, 0, 0o.25);color: #ffffff;outline: none;cursor: pointer;border: none;z-index: 1;display: none;}
+    #btnScrollToTop:active {background: #4A89DC;;}
+    .about-image img {border-radius: 10px;width: 100%;height: 50%}
+    .carousel-item img {width: 100%;height: 600px;}
+    .animated-info {width: 400px !important;}
+    @media (max-width: 480px) {
+        .carousel-item img {width: 100% !important;height: 380px;}
+        .p-text p {text-align: left;}
+    }
+    @media (max-width: 768px) {
+        .animated-info .animated-item {font-size: 28px;}
+        .carousel-item img {width: 100% !important;height: 380px !important;}
+        .owl-carousel {z-index: -1 !important;}
+        .contact-info-item p {font-size: 14px;}
+        .p-text p {text-align: left;}
+    }
+</style>
+<!-- end scroll button code  -->
+
 <noscript>
     <style type="text/css">
         [data-aos] {
