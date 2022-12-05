@@ -36,14 +36,11 @@ class HomeView(View):
 
             messages_email = render_to_string('email.html', {'name': name})
             
-            contact_form = GetInTouch()
-            contact_form.name = name
-            contact_form.email = email
-            contact_form.message = message
-            contact_form.save()
+            contact_obj = GetInTouch.objects.create(name=name, email=email, message=message)
             
-            email = ContactNotificationEmail(name, email, message, messages_email)
-            email.run() 
+            if contact_obj:
+                email = ContactNotificationEmail(name, email, message, messages_email)
+                email.run() 
                 
             message = {'msg':'Your form has been submitted successfully' }
             return JsonResponse(message)
