@@ -2,12 +2,12 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.contrib.auth import get_user_model
 from django.template.loader import get_template
-from django.template.loader import render_to_string
+# from django.template.loader import render_to_string
 from django.views.generic import View
 
 from xhtml2pdf import pisa
 
-from resume.common.email import ContactNotificationEmail
+# from resume.common.email import ContactNotificationEmail
 from resume.apps.web.portfolio.models import GetInTouch
 
 User = get_user_model()
