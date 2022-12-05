@@ -27,3 +27,5 @@ Steps:
 6. Create a directory named .env  in the root project's directory. 
    
 7. Then run "python manage.py runserver localhost:8000 --settings=config.settings.dev".
+
+![resume picture](https://user-images.githubusercontent.com/68503196/205584275-b4ee6d67-3bae-4f51-aa5a-c2a1ed2adbc5.png)
