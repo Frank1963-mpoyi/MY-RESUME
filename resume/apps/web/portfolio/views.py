@@ -9,7 +9,6 @@ from xhtml2pdf import pisa
 
 from resume.common.email import ContactNotificationEmail
 from resume.apps.web.portfolio.models import GetInTouch
-from resume.apps.web.portfolio.forms import GetInTouchForm
 
 User = get_user_model()
 
@@ -19,9 +18,7 @@ class HomeView(View):
 
     def get(self, request, **kwargs):
         
-        form = GetInTouchForm
-        
-        context = {'form': form}
+        context={}
         
         return render(request, self.template_name, context)
     
