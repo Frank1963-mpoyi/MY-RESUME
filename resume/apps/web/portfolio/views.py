@@ -29,35 +29,37 @@ class HomeView(View):
         
         return render(request, self.template_name, context)
     
-    # def post(self, request, **kwargs):
-
-    #     form = GetInTouchForm(request.POST or None)
-
-    #     name = request.POST.get('name', '')
+    def post(self, request, **kwargs):
         
-    #     if form.is_valid():
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        message = request.POST.get('message', '')
+
+        if name  and email and message:
+            name_obj = GetInTouch.objects.filter(name=name).exists()
+
+            if name_obj:
+                message = {'msg':f'Oops! {name} already exists please try again'}
+                return JsonResponse(message) 
+
+            messages_email = render_to_string('email.html', {'name': name})
             
-    #         messages_email = render_to_string('email.html', {'name': name})
+            contact_form = GetInTouch()
+            contact_form.name = name
+            contact_form.email = email
+            contact_form.message = message
+            contact_form.save()
             
-    #         data = GetInTouch(**form.cleaned_data)
-            
-    #         data.save() 
-            
-    #         messages.success(request, "Thanks for contacting us! We will be in touch with you shortly.")
-            
-    #         if data:
-    #             email = ContactNotificationEmail(data, messages_email)
-    #             email.run() 
+            email = ContactNotificationEmail(name, email, message, messages_email)
+            email.run() 
                 
-    #         return redirect(self.request.META['HTTP_REFERER'])
-    #     else:
-    #         messages.success(request, "Oops! your contact details failed please try again !")  
-            
-    #     context = {'form': form}
+            message = {'msg':'Your form has been submitted successfully' }
+            return JsonResponse(message)
 
-    #     return render(request, self.template_name, context)
-
-
+        else:
+            message = {'msg':'Oops ! There were some errors in your form input.' }
+            return JsonResponse(message)  
+    
 
 class PdfCvCreate(View):
     

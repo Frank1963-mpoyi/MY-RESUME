@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 
 
 class ContactNotificationEmail(Thread):
-    def __init__(self, data, messages_email):
+    def __init__(self, name, email, message, messages_email):
         super(ContactNotificationEmail, self).__init__()
         # self.receiver = 'mpoyitshibuyi63@gmail.com'
         self.sender = settings.EMAIL_SENDER

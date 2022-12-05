@@ -3,8 +3,11 @@
 
 <div class="contant-section px-3 px-lg-4 pb-4" id="contact">
     <h2 class="h3 text mb-3">Contact</h2>
+    
     <div class="row">
         <div class="col-md-7 d-print-none">
+              <!-- error message  -->
+    <p id="results" class="" style="text-align:center; color:#fff; font-weight: bolder"></p>
             <div class="my-2">
 
                 <form action="" method="POST" id="contact-form">
@@ -13,18 +16,20 @@
                     <div class="row">
                         <div class="col-6">
                             <input class="form-control" type="text" id="name" name="name"
-                                placeholder="Your Name" required>
+                                placeholder="Your Name">
                         </div>
                         <div class="col-6">
                             <input class="form-control" type="email" id="email" name="email"
-                                placeholder="Your E-mail" required>
+                                placeholder="Your E-mail">
                         </div>
                     </div>
                     <div class="form-group my-2">
                         <textarea class="form-control" style="resize: none;" id="message" name="message"
-                            rows="4" placeholder="Your Message" required></textarea>
+                            rows="4" placeholder="Your Message"></textarea>
                     </div>
+                    
                     <button class="btn btn-primary mt-2" type="submit">Send</button>
+                    
                 </form>
                 
             </div>
@@ -49,7 +54,7 @@
         e.preventDefault();
         $.ajax({
             type:'POST',
-            url:'{#% url "web:home:contact" %#}',
+            url:'{% url "home" %}',
             data:
             {
                 name:$("#name").val(),
@@ -58,7 +63,7 @@
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
             }, 
             success: function(data) {
-                $('#results').html("<div class='alert-box alert btn btn-danger radius' data-alert>" + data.msg + "</div>"); // add the error to the dom
+                $('#results').html("<div class='radius' data-alert style='background:#4A89DC;'> " + data.msg + "</div>"); // add the error to the dom
                 $("#contact-form")[0].reset();
             },
             error: function(data) {
