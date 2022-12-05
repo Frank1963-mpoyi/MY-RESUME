@@ -28,11 +28,11 @@ class HomeView(View):
         message = request.POST.get('message', '')
 
         if name  and email and message:
-            name_obj = GetInTouch.objects.filter(name=name).exists()
+            # name_obj = GetInTouch.objects.filter(name=name).exists()
 
-            if name_obj:
-                message = {'msg':f'Oops! {name} already exists please try again'}
-                return JsonResponse(message) 
+            # if name_obj:
+            #     message = {'msg':f'Oops! {name} already exists please try again'}
+            #     return JsonResponse(message) 
 
             messages_email = render_to_string('email.html', {'name': name})
             
