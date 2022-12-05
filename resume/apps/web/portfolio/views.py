@@ -1,13 +1,9 @@
-from django.conf import settings
-from django.contrib import messages
 from django.http import HttpResponse, JsonResponse
-from django.core.mail import EmailMessage
-from django.core.paginator import Paginator
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib.auth import get_user_model
 from django.template.loader import get_template
 from django.template.loader import render_to_string
-from django.views.generic import View, TemplateView
+from django.views.generic import View
 
 from xhtml2pdf import pisa
 
@@ -30,7 +26,6 @@ class HomeView(View):
         return render(request, self.template_name, context)
     
     def post(self, request, **kwargs):
-        
         name = request.POST.get('name', '')
         email = request.POST.get('email', '')
         message = request.POST.get('message', '')
