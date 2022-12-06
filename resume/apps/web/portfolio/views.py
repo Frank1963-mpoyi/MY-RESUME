@@ -18,9 +18,7 @@ class HomeView(View):
 
     def get(self, request, **kwargs):
         
-        context={}
-        
-        return render(request, self.template_name, context)
+        return render(request, self.template_name, {})
     
     def post(self, request, **kwargs):
         name = request.POST.get('name', '')
@@ -53,7 +51,6 @@ class HomeView(View):
 class PdfCvCreate(View):
     
     def get(self, request,**kwargs):
-
         data = [{"name":"Mpoyi"}]
 
         template_path = 'apps/portfolio/cv.html'
