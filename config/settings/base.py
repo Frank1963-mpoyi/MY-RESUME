@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 
-import configparser
 from dotenv import load_dotenv
 
 import cloudinary
@@ -27,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    #apps
     'resume.apps.web.accounts',
     'resume.apps.web.portfolio',
 ]
