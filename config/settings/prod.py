@@ -7,7 +7,7 @@ DEBUG = not bool(os.getenv("DEBUG"))
 
 IS_ENV = 'PRODUCTION'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'web-production-edaf.up.railway.app']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'mpoyitshibuyi.up.railway.app']
 
 MIDDLEWARE += ['whitenoise.middleware.WhiteNoiseMiddleware',]
 
